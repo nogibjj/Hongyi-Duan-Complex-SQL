@@ -24,6 +24,7 @@ def load(dataset='data/Heroes_3.csv'):
             cursor.execute(string_sql)
             cursor.close()
             connection.close()
+    return "Load Success"
 
 if __name__ == "__main__":
     load()
