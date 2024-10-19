@@ -11,8 +11,8 @@ def test_extract():
 
 def test_load():
     load_dotenv()
-    load = load()
-    assert load == "Load Success"
+    load_data = load()
+    assert load_data == "Load Success"
     
 def test_query():
     qt = query()
