@@ -3,3 +3,6 @@ pytest
 click
 black
 pytest-cov
+databricks-sql-connector
+python-dotenv
+requests

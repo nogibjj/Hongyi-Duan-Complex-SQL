@@ -1,6 +1,12 @@
-def add(x, y):
-    return x + y
-  
-result = add(1, 2)
+from mylib.extract import extract
+from mylib.transform_load import load
+from mylib.query import query
 
-print(f"Sum: 1, 2, {result}")
+# Extract
+extract()
+
+# Transform and load
+load()
+
+# Query
+query()

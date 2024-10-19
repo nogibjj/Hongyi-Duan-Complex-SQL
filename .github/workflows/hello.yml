@@ -1,21 +1,30 @@
-name: CI/CD run
+name: SQL Run
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: install packages
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11.5'
+      - name: Install dependencies
         run: make install
-      - name: lint
-        run: make lint
-      - name: test
+      - name: Run tests
+        env:
+          DATABRICKS_KEY: ${{ secrets.DATABRICKS_KEY }}
+          SERVER_HOSTNAME: ${{ secrets.SERVER_HOSTNAME }}
+          HTTP_PATH: ${{ secrets.HTTP_PATH }}
         run: make test
+      - name: Make lint
+        run: make lint
       - name: format
         run: make format
